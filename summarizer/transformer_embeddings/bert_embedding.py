@@ -47,7 +47,11 @@ class BertEmbedding:
             self.device = torch.device(f"cuda:{gpu_id}")
 
         elif torch.backends.mps.is_available():
+            
             self.device = torch.device("mps")
+            
+            x = torch.ones(1, device= self.device)
+            print (x)
 
 
         if custom_model:
