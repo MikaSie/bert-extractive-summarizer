@@ -55,7 +55,7 @@ class BertEmbedding:
 
 
         if custom_model:
-            print("Using custom model")
+            print("Using custom model", flush=True)
             self.model = custom_model.to(self.device)
 
         else:
