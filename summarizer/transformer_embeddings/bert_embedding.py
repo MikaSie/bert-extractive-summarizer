@@ -55,7 +55,9 @@ class BertEmbedding:
 
 
         if custom_model:
+            print("Using custom model")
             self.model = custom_model.to(self.device)
+
         else:
             self.model = base_model.from_pretrained(
                 model, output_hidden_states=True).to(self.device)
