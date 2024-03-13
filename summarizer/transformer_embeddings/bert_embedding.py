@@ -49,13 +49,10 @@ class BertEmbedding:
         elif torch.backends.mps.is_available():
             
             self.device = torch.device("mps")
-            
-            x = torch.ones(1, device= self.device)
-            print (x)
-
+            base_model = base_model.to(self.device)
+            print("Using MPS device")
 
         if custom_model:
-            print("Using custom model", flush=True)
             self.model = custom_model.to(self.device)
 
         else:
