@@ -39,17 +39,14 @@ class BertEmbedding:
         base_model, base_tokenizer = self.MODELS.get(model, (None, None))
 
         self.device = torch.device("cpu")
-        print("Using CPU", flush=True)
         if torch.cuda.is_available():
             assert (
                 isinstance(gpu_id, int) and (0 <= gpu_id and gpu_id < torch.cuda.device_count())
             ), f"`gpu_id` must be an integer between 0 to {torch.cuda.device_count() - 1}. But got: {gpu_id}"
 
             self.device = torch.device(f"cuda:{gpu_id}")
-
     
         elif torch.backends.mps.is_available():
-            print("MPS device found.", flush=True)
             self.device = torch.device("mps")
 
         if custom_model:
