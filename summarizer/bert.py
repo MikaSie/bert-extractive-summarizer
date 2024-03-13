@@ -15,6 +15,8 @@ from transformers import (AlbertModel, AlbertTokenizer, BartModel, BigBirdModel,
 from summarizer.summary_processor import SummaryProcessor
 from summarizer.text_processors.sentence_handler import SentenceHandler
 from summarizer.transformer_embeddings.bert_embedding import BertEmbedding
+import logging
+logging.basicConfig(level=logging.DEBUG)
 
 
 class BertSummarizer(SummaryProcessor):
@@ -77,7 +79,7 @@ class Summarizer(BertSummarizer):
         :param hidden_concat: Whether or not to concat multiple hidden layers.
         :param gpu_id: GPU device index if CUDA is available. 
         """
-        print("Summarizer found.")
+        logging.debug('This is a debug message')
         super(Summarizer, self).__init__(
             model, custom_model, custom_tokenizer, hidden, reduce_option, sentence_handler, random_state, hidden_concat,
             gpu_id
