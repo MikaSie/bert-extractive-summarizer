@@ -77,7 +77,7 @@ class Summarizer(BertSummarizer):
         :param hidden_concat: Whether or not to concat multiple hidden layers.
         :param gpu_id: GPU device index if CUDA is available. 
         """
-
+        print("Summarizer found.")
         super(Summarizer, self).__init__(
             model, custom_model, custom_tokenizer, hidden, reduce_option, sentence_handler, random_state, hidden_concat,
             gpu_id
