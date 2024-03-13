@@ -15,7 +15,6 @@ from transformers import (AlbertModel, AlbertTokenizer, BartModel, BigBirdModel,
 from summarizer.summary_processor import SummaryProcessor
 from summarizer.text_processors.sentence_handler import SentenceHandler
 from summarizer.transformer_embeddings.bert_embedding import BertEmbedding
-import sys
 
 
 class BertSummarizer(SummaryProcessor):
@@ -78,11 +77,6 @@ class Summarizer(BertSummarizer):
         :param hidden_concat: Whether or not to concat multiple hidden layers.
         :param gpu_id: GPU device index if CUDA is available. 
         """
-        sys.stdout.write('test')
-
-        print("This will be written to output.txt", flush= True)
-
-        # Remember to close the file and reset stdout when you're done
         
         super(Summarizer, self).__init__(
             model, custom_model, custom_tokenizer, hidden, reduce_option, sentence_handler, random_state, hidden_concat,
