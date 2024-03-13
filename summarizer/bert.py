@@ -78,14 +78,11 @@ class Summarizer(BertSummarizer):
         :param hidden_concat: Whether or not to concat multiple hidden layers.
         :param gpu_id: GPU device index if CUDA is available. 
         """
-        sys.stdout = open('output.txt', 'w')
+        sys.stdout.write('test')
 
-        print("This will be written to output.txt")
+        print("This will be written to output.txt", flush= True)
 
         # Remember to close the file and reset stdout when you're done
-        sys.stdout.close()
-        sys.stdout = sys.__stdout__
-
         
         super(Summarizer, self).__init__(
             model, custom_model, custom_tokenizer, hidden, reduce_option, sentence_handler, random_state, hidden_concat,
