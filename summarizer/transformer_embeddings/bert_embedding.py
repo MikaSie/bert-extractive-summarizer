@@ -2,6 +2,7 @@ from typing import List, Union
 
 import numpy as np
 import torch
+import torch.nn as nn
 from numpy import ndarray
 from transformers import (AlbertModel, AlbertTokenizer, BertModel,
                           BertTokenizer, DistilBertModel, DistilBertTokenizer,
@@ -51,11 +52,16 @@ class BertEmbedding:
 
         if custom_model:
             self.model = custom_model.to(self.device)
+            self.model= nn.DataParallel(self.model)
+            self.model.to(self.device)
 
         else:
             self.model = base_model.from_pretrained(
                 model, output_hidden_states=True).to(self.device)
+            self.model= nn.DataParallel(self.model)
+            self.model.to(self.device)
 
+            
         if custom_tokenizer:
             self.tokenizer = custom_tokenizer
         else:
