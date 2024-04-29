@@ -46,6 +46,7 @@ class BertEmbedding:
             
             #Disabled to cuda, used to be set to one GPU.
             self.device = torch.device(f"cuda")
+            print(f"Using GPU's: {torch.cuda.device_count()}")
 
         if custom_model:
             self.model = custom_model.to(self.device)
